@@ -8,7 +8,7 @@ Open-source interactive reference for building a data function in an iGaming com
 
 A detailed, fictional but realistic portrayal of how a data department operates inside an iGaming company — **Fantasy iGaming LTD** (Sportsbook + Casino, ~500K MAU, ~$5M NGR/month, 20-person data team). The site covers 19 sections spanning the entire data function: from architecture and data model to A/B testing, FinOps, and team onboarding. Content is in Russian; code, comments, and this README are in English.
 
-**[Live Demo](https://your-username.github.io/fantasy-igaming-data-department/)**
+**[Live Demo](https://cosmiksoul.github.io//fantasy-igaming-data-department/)**
 
 ## Sections
 
