@@ -9,6 +9,9 @@
   <meta property="og:description" content="Стек технологий по слоям: от источников данных до BI, ML и Reverse ETL.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -258,8 +261,8 @@
     g.provider,
     b.placed_at
 <span class="kw">FROM</span> stg_betting__bets b
-<span class="kw">LEFT JOIN</span> stg_players p <span class="kw">ON</span> b.player_id = p.player_id
-<span class="kw">LEFT JOIN</span> stg_games g <span class="kw">ON</span> b.game_id = g.game_id</code></pre>
+<span class="kw">LEFT JOIN</span> stg_core__players p <span class="kw">ON</span> b.player_id = p.player_id
+<span class="kw">LEFT JOIN</span> stg_core__games g <span class="kw">ON</span> b.game_id = g.game_id</code></pre>
             </div>
 
             <h3>Marts — готовые витрины</h3>

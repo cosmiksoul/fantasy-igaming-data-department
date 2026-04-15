@@ -9,6 +9,9 @@
   <meta property="og:description" content="Структура затрат data-функции: инфраструктура, SaaS, люди. Оптимизация и бюджетное планирование.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -260,7 +263,7 @@
               <div class="code-block" data-lang="sql">
                 <pre><code>CREATE TABLE fct_bets (
     bet_id String,
-    player_id UInt64,
+    player_id String,
     bet_amount Decimal(18,2),
     placed_at DateTime
 ) ENGINE = MergeTree()

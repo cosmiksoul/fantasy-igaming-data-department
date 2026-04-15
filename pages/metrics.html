@@ -9,6 +9,9 @@
   <meta property="og:description" content="18 ключевых iGaming-метрик: формулы, SQL, бенчмарки, alert thresholds, подводные камни.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -81,7 +84,7 @@
     <span class="fn">toDate</span>(placed_at) <span class="kw">AS</span> dt,
     <span class="fn">sum</span>(bet_amount) - <span class="fn">sum</span>(payout_amount) <span class="kw">AS</span> ggr
 <span class="kw">FROM</span> int_bets_enriched
-<span class="kw">WHERE</span> status = <span class="str">'settled'</span>
+<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'won'</span>, <span class="str">'lost'</span>)
 <span class="kw">GROUP BY</span> dt</code></pre>
             </div>
             <div class="metric-card-benchmarks"><strong>Benchmarks:</strong> EU: $3-15M/мес, LatAm: $1-5M/мес, SEA: $2-8M/мес</div>
@@ -174,7 +177,7 @@
             <div class="code-block" data-lang="sql">
               <pre><code><span class="kw">SELECT</span>
     acquisition_channel,
-    <span class="fn">avg</span>(lifetime_ngr) <span class="kw">AS</span> avg_ltv
+    <span class="fn">avg</span>(lifetime_ggr) <span class="kw">AS</span> avg_ltv  <span class="cmt">-- simplified: using GGR as LTV proxy</span>
 <span class="kw">FROM</span> mart_player_lifetime
 <span class="kw">WHERE</span> days_active > <span class="num">30</span>
 <span class="kw">GROUP BY</span> acquisition_channel</code></pre>
@@ -239,9 +242,12 @@
             <div class="code-block" data-lang="sql">
               <pre><code><span class="kw">SELECT</span>
     channel,
-    cac / <span class="fn">nullIf</span>(avg_monthly_ngr_per_player, <span class="num">0</span>) <span class="kw">AS</span> payback_months
+    cac,
+    roas,
+    <span class="kw">CASE WHEN</span> roas > <span class="num">0</span> <span class="kw">THEN</span> <span class="fn">round</span>(<span class="num">1</span> / (roas / <span class="num">12</span>), <span class="num">1</span>) <span class="kw">ELSE NULL END</span> <span class="kw">AS</span> payback_months
 <span class="kw">FROM</span> mart_marketing_performance
-<span class="kw">WHERE</span> dt = (<span class="kw">SELECT</span> <span class="fn">max</span>(dt) <span class="kw">FROM</span> mart_marketing_performance)</code></pre>
+<span class="kw">WHERE</span> dt = (<span class="kw">SELECT</span> <span class="fn">max</span>(dt) <span class="kw">FROM</span> mart_marketing_performance)
+<span class="kw">ORDER BY</span> payback_months</code></pre>
             </div>
             <div class="metric-card-benchmarks"><strong>Benchmarks:</strong> Target: &lt; 6 мес, Acceptable: 6-12 мес, Danger: &gt; 12 мес</div>
             <p class="metric-card-pitfalls"><strong>Подводные камни:</strong> Зависит от retention — если churn высокий, payback может никогда не наступить. Для VIP-игроков payback часто 1-2 месяца, для casual — 8-12. Не путать с ROI.</p>

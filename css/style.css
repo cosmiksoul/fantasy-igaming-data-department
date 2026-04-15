@@ -1779,9 +1779,9 @@ td {
 /* --- About Card (index page) --- */
 .about-card {
   display: block;
-  background: rgba(83, 74, 183, 0.08);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--color-purple);
+  border-left: 3px solid var(--color-gray);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   margin-top: var(--space-lg);
@@ -1790,7 +1790,7 @@ td {
 }
 
 .about-card:hover {
-  background: rgba(83, 74, 183, 0.12);
+  background: var(--bg-card-hover);
   border-color: var(--border-hover);
 }
 
@@ -1804,7 +1804,7 @@ td {
 .about-card-label {
   display: block;
   font-size: var(--fs-small);
-  color: var(--color-lavender);
+  color: var(--color-gray);
   font-weight: var(--fw-medium);
   margin-bottom: var(--space-xs);
 }
@@ -1827,7 +1827,7 @@ td {
   flex-shrink: 0;
   font-size: var(--fs-body);
   font-weight: var(--fw-medium);
-  color: var(--color-lavender);
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 

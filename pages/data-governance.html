@@ -9,6 +9,9 @@
   <meta property="og:description" content="Data Ownership, каталог (DataHub), Data Dictionary, RBAC, DQ framework (5 измерений), data lifecycle.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -296,7 +299,8 @@
             <div class="accordion-body">
               <p>Своевременность — данные обновляются по расписанию.</p>
               <div class="code-block" data-lang="sql">
-                <pre><code><span class="cmt">-- Airflow sensor: mart updated by 7:00 UTC</span>
+                <pre><code><span class="cmt">-- Мониторинг: системная таблица (не часть аналитической модели)</span>
+<span class="cmt">-- Airflow sensor: mart updated by 7:00 UTC</span>
 <span class="kw">SELECT</span>
     table_name,
     last_updated_at,
@@ -326,7 +330,7 @@
         (<span class="kw">SELECT</span> turnover <span class="kw">FROM</span> mart_daily_kpi <span class="kw">WHERE</span> dt = <span class="fn">today</span>() - <span class="num">1</span>), <span class="num">0</span>
     ) * <span class="num">100</span> <span class="kw">AS</span> diff_pct</code></pre>
               </div>
-              <p><strong>Target:</strong> SUM(fct_bets.amount) = mart_daily_kpi.turnover ±0.01%</p>
+              <p><strong>Target:</strong> SUM(fct_bets.bet_amount) = mart_daily_kpi.turnover ±0.01%</p>
             </div>
           </div>
 
