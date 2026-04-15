@@ -44,7 +44,7 @@
             <pre class="mermaid">
 flowchart LR
     A["Betting Engine\n(ставка размещена)"] --> B["Kafka\nbets.placed"]
-    B --> C["Airbyte\n(batch load)"]
+    B --> C["Kafka Connect\n(ClickHouse Sink)"]
     C --> D["ClickHouse\nraw.betting_bets"]
     D --> E["stg_betting__bets\n(dbt staging)"]
     E --> F["int_bets_enriched\n(dbt intermediate)"]
@@ -89,8 +89,8 @@ flowchart LR
               <div class="table-wrap">
                 <table>
                   <tbody>
-                    <tr><td><strong>Что происходит</strong></td><td>Airbyte читает из Kafka и загружает в <code>raw.betting_bets</code> таблицу ClickHouse. Batch sync каждые 15 минут.</td></tr>
-                    <tr><td><strong>Инструмент</strong></td><td>Airbyte (Kafka → ClickHouse connector)</td></tr>
+                    <tr><td><strong>Что происходит</strong></td><td>Kafka Connect (ClickHouse Sink) читает из Kafka и загружает в <code>raw.betting_bets</code> таблицу ClickHouse. Streaming с минимальной задержкой.</td></tr>
+                    <tr><td><strong>Инструмент</strong></td><td>Kafka Connect (ClickHouse Sink)</td></tr>
                     <tr><td><strong>Владелец</strong></td><td>Data Engineering</td></tr>
                     <tr><td><strong>DQ-проверки</strong></td><td>Мониторинг объёма: алерт если row count отклоняется &gt; 20% от среднего</td></tr>
                   </tbody>

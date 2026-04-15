@@ -419,6 +419,8 @@ erDiagram
     bet_id,
     player_id,
     <span class="fn">lower</span>(product) <span class="kw">AS</span> product,
+    game_id,
+    event_id,
     <span class="fn">CAST</span>(bet_amount <span class="kw">AS</span> Decimal64(<span class="num">2</span>)) <span class="kw">AS</span> bet_amount,
     <span class="fn">CAST</span>(payout_amount <span class="kw">AS</span> Decimal64(<span class="num">2</span>)) <span class="kw">AS</span> payout_amount,
     <span class="fn">lower</span>(status) <span class="kw">AS</span> status,

@@ -1776,6 +1776,61 @@ td {
   }
 }
 
+/* --- About Card (index page) --- */
+.about-card {
+  display: block;
+  background: rgba(83, 74, 183, 0.08);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--color-purple);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-top: var(--space-lg);
+  text-decoration: none;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.about-card:hover {
+  background: rgba(83, 74, 183, 0.12);
+  border-color: var(--border-hover);
+}
+
+.about-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.about-card-label {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--color-lavender);
+  font-weight: var(--fw-medium);
+  margin-bottom: var(--space-xs);
+}
+
+.about-card-title {
+  display: block;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  color: var(--text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.about-card-desc {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.about-card-cta {
+  flex-shrink: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  color: var(--color-lavender);
+  white-space: nowrap;
+}
+
 /* --- Glossary --- */
 .glossary-list {
   margin: 0;

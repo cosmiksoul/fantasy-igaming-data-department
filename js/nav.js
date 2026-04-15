@@ -9,40 +9,40 @@ const NAV_SECTIONS = [
       { num: '01', title: 'Data Architecture', href: 'data-architecture.html', color: 'purple' },
       { num: '02', title: 'Org Structure', href: 'org-structure.html', color: 'purple' },
       { num: '03', title: 'Data Model', href: 'data-model.html', color: 'purple' },
-      { num: '04', title: 'Event Taxonomy', href: 'event-taxonomy.html', color: 'teal' },
-      { num: '05', title: 'Metrics Dictionary', href: 'metrics.html', color: 'teal' },
+      { num: '04', title: 'Event Taxonomy', href: 'event-taxonomy.html', color: 'purple' },
+      { num: '05', title: 'Metrics Dictionary', href: 'metrics.html', color: 'purple' },
     ]
   },
   {
     group: 'Governance',
     items: [
-      { num: '06', title: 'Data Governance', href: 'data-governance.html', color: 'blue' },
-      { num: '07', title: 'SLA', href: 'sla.html', color: 'blue' },
+      { num: '06', title: 'Data Governance', href: 'data-governance.html', color: 'amber' },
+      { num: '07', title: 'SLA', href: 'sla.html', color: 'amber' },
     ]
   },
   {
     group: 'Operations',
     items: [
-      { num: '08', title: 'DataOps', href: 'dataops.html', color: 'amber' },
-      { num: '09', title: 'MLOps', href: 'mlops.html', color: 'amber' },
-      { num: '10', title: 'Data Lineage', href: 'data-lineage.html', color: 'pink' },
+      { num: '08', title: 'DataOps', href: 'dataops.html', color: 'red' },
+      { num: '09', title: 'MLOps', href: 'mlops.html', color: 'red' },
+      { num: '10', title: 'Data Lineage', href: 'data-lineage.html', color: 'red' },
       { num: '11', title: 'Incident Response', href: 'incident-response.html', color: 'red' },
     ]
   },
   {
     group: 'Practice',
     items: [
-      { num: '12', title: 'Dashboards', href: 'dashboards.html', color: 'green' },
-      { num: '13', title: 'A/B Testing', href: 'ab-testing.html', color: 'green' },
-      { num: '14', title: 'Management', href: 'management.html', color: 'coral' },
+      { num: '12', title: 'Dashboards', href: 'dashboards.html', color: 'teal' },
+      { num: '13', title: 'A/B Testing', href: 'ab-testing.html', color: 'teal' },
+      { num: '14', title: 'Management', href: 'management.html', color: 'teal' },
     ]
   },
   {
     group: 'Advanced',
     items: [
-      { num: '15', title: 'Onboarding', href: 'onboarding.html', color: 'gray' },
-      { num: '16', title: 'FinOps', href: 'finops.html', color: 'gray' },
-      { num: '17', title: 'Roadmap', href: 'roadmap.html', color: 'gray' },
+      { num: '15', title: 'Onboarding', href: 'onboarding.html', color: 'blue' },
+      { num: '16', title: 'FinOps', href: 'finops.html', color: 'blue' },
+      { num: '17', title: 'Roadmap', href: 'roadmap.html', color: 'blue' },
     ]
   },
   {

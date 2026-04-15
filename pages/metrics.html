@@ -33,6 +33,10 @@
           Метрики сгруппированы по категориям: Revenue, Unit Economics, Players, Marketing, Product. SQL-примеры используют mart-таблицы из <a href="data-model.html">Data Model</a>.
         </div>
 
+        <div class="alert alert-info">
+          Здесь представлены 18 ключевых метрик (L1). Полный каталог (50+ метрик с бенчмарками и alert thresholds) доступен в репозитории проекта.
+        </div>
+
         <!-- ============================================== -->
         <!-- REVENUE -->
         <!-- ============================================== -->
@@ -50,9 +54,13 @@
             <div class="code-block" data-lang="sql">
               <pre><code><span class="kw">SELECT</span>
     <span class="fn">toDate</span>(placed_at) <span class="kw">AS</span> dt,
+    <span class="fn">countIf</span>(product = <span class="str">'casino'</span>) <span class="kw">AS</span> casino_bets,
+    <span class="fn">countIf</span>(product = <span class="str">'sports'</span>) <span class="kw">AS</span> sports_bets,
     <span class="fn">sum</span>(bet_amount) <span class="kw">AS</span> turnover
-<span class="kw">FROM</span> mart_daily_kpi
-<span class="kw">GROUP BY</span> dt</code></pre>
+<span class="kw">FROM</span> fct_bets
+<span class="kw">WHERE</span> placed_at >= <span class="fn">today</span>() - <span class="num">30</span>
+<span class="kw">GROUP BY</span> dt
+<span class="kw">ORDER BY</span> dt <span class="kw">DESC</span></code></pre>
             </div>
             <div class="metric-card-benchmarks"><strong>Benchmarks:</strong> EU: $50-200M/мес, LatAm: $20-80M/мес, SEA: $30-120M/мес</div>
             <div class="metric-card-benchmarks"><strong>Alerts:</strong> <span class="badge badge-red">red</span> &lt; 70% от avg за 4 недели &nbsp; <span class="badge badge-amber">yellow</span> &lt; 85%</div>

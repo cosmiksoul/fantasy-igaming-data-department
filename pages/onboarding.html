@@ -191,17 +191,18 @@
             <div class="accordion-body">
               <p>К концу недели 1 ты должен самостоятельно написать запрос к DWH. Задание от buddy:</p>
               <div class="code-block" data-lang="sql">
-                <pre><code>-- Задание: посчитай NGR за последние 7 дней по гео
-SELECT
-    date,
-    geo,
-    SUM(ggr) - SUM(bonus_cost) - SUM(provider_fees) AS ngr
-FROM mart_daily_kpi
-WHERE date >= today() - 7
-GROUP BY date, geo
-ORDER BY date DESC, ngr DESC;</code></pre>
+                <pre><code><span class="cmt">-- Задание: посчитай основные метрики за последние 7 дней</span>
+<span class="kw">SELECT</span>
+    dt,
+    active_players,
+    turnover,
+    ggr,
+    ngr
+<span class="kw">FROM</span> mart_daily_kpi
+<span class="kw">WHERE</span> dt >= <span class="fn">today</span>() - <span class="num">7</span>
+<span class="kw">ORDER BY</span> dt <span class="kw">DESC</span>;</code></pre>
               </div>
-              <p>Цель: убедиться, что доступы работают, ты понимаешь структуру mart-таблиц и можешь самостоятельно запустить запрос в DBeaver / DataGrip / ClickHouse client.</p>
+              <p>Цель: убедиться, что доступы работают и ты понимаешь структуру mart-таблиц. Запусти запрос в DBeaver / DataGrip / ClickHouse client и посмотри, какие колонки есть в mart_daily_kpi.</p>
             </div>
           </div>
         </section>

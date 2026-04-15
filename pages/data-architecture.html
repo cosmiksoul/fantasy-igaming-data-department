@@ -230,6 +230,9 @@
 <span class="kw">SELECT</span>
     bet_id,
     player_id,
+    <span class="fn">lower</span>(product) <span class="kw">AS</span> product,
+    game_id,
+    event_id,
     <span class="fn">CAST</span>(bet_amount <span class="kw">AS</span> Decimal64(<span class="num">2</span>)) <span class="kw">AS</span> bet_amount,
     <span class="fn">CAST</span>(payout_amount <span class="kw">AS</span> Decimal64(<span class="num">2</span>)) <span class="kw">AS</span> payout_amount,
     <span class="fn">lower</span>(status) <span class="kw">AS</span> status,
@@ -339,7 +342,7 @@ dag = DAG(
 )
 
 <span class="cmt"># Task dependencies</span>
-extract_betting >> extract_payments >> extract_players \
+[extract_betting, extract_payments, extract_players] \
     >> load_to_clickhouse \
     >> dbt_run_staging \
     >> dbt_run_intermediate \

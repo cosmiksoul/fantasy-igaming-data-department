@@ -259,7 +259,7 @@
               <p>Все fact-таблицы партиционированы по месяцам. Запросы за последний месяц не сканируют исторические данные — экономия IO и CPU.</p>
               <div class="code-block" data-lang="sql">
                 <pre><code>CREATE TABLE fct_bets (
-    bet_id UUID,
+    bet_id String,
     player_id UInt64,
     bet_amount Decimal(18,2),
     placed_at DateTime
