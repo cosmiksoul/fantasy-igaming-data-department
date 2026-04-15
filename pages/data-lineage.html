@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Lineage — Fantasy iGaming Data Department</title>
-  <meta name="description" content="End-to-end путь данных: от события до дашборда CEO. Два примера — NGR lineage и churn prediction pipeline.">
+  <meta name="description" content="End-to-end путь данных: от события до дашборда CEO. Три примера: NGR lineage, LTV calculation, Churn prediction pipeline.">
   <meta property="og:title" content="Data Lineage — Fantasy iGaming Data Department">
-  <meta property="og:description" content="End-to-end путь данных: от события до дашборда CEO. Два примера — NGR lineage и churn prediction pipeline.">
+  <meta property="og:description" content="End-to-end путь данных: от события до дашборда CEO. Три примера: NGR lineage, LTV calculation, Churn prediction pipeline.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
@@ -29,7 +29,7 @@
 
         <div class="page-header">
           <h1>Data Lineage</h1>
-          <p class="page-header-desc">Полный путь данных от источника до потребителя. Два примера: как считается NGR и как работает churn prediction pipeline.</p>
+          <p class="page-header-desc">Полный путь данных от источника до потребителя. Три примера: NGR lineage, LTV calculation, Churn prediction pipeline.</p>
         </div>
 
         <div class="alert alert-info">
@@ -257,7 +257,7 @@ flowchart LR
               <div class="table-wrap">
                 <table>
                   <tbody>
-                    <tr><td><strong>Что происходит</strong></td><td>累ulative метрики по каждому игроку: lifetime_ngr (= GGR - bonus_cost - fees), days_active, total_bets, segment. Это фактический (когортный) LTV — то, сколько игрок уже принёс.</td></tr>
+                    <tr><td><strong>Что происходит</strong></td><td>Cumulative метрики по каждому игроку: lifetime_ngr (= GGR - bonus_cost - fees), days_active, total_bets, segment. Это фактический (когортный) LTV — то, сколько игрок уже принёс.</td></tr>
                     <tr><td><strong>Инструмент</strong></td><td>dbt Core</td></tr>
                     <tr><td><strong>Владелец</strong></td><td>Financial Analyst (steward)</td></tr>
                     <tr><td><strong>DQ-проверки</strong></td><td><code>not_null(player_id, lifetime_ngr)</code>. Бизнес-правило: lifetime_ngr не может быть отрицательным для когорт старше 6 месяцев (если да — аномалия).</td></tr>

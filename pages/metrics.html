@@ -67,7 +67,7 @@
             </div>
             <div class="metric-card-benchmarks"><strong>Benchmarks:</strong> EU: $50-200M/мес, LatAm: $20-80M/мес, SEA: $30-120M/мес</div>
             <div class="metric-card-benchmarks"><strong>Alerts:</strong> <span class="badge badge-red">red</span> &lt; 70% от avg за 4 недели &nbsp; <span class="badge badge-amber">yellow</span> &lt; 85%</div>
-            <p class="metric-card-pitfalls"><strong>Подводные камни:</strong> Turnover ≠ revenue. Высокий turnover с низкой маржой — плохой знак. Бонусные ставки раздувают turnover без реальных денег. Сравнивайте только рассчитанные (settled) ставки.</p>
+            <p class="metric-card-pitfalls"><strong>Подводные камни:</strong> Turnover ≠ revenue. Высокий turnover с низкой маржой — плохой знак. Бонусные ставки раздувают turnover без реальных денег. Сравнивайте только рассчитанные (won, lost) ставки.</p>
             <p class="text-secondary" style="font-size: var(--fs-small)"><strong>Owner:</strong> Product &nbsp;|&nbsp; <strong>Depends on:</strong> — &nbsp;|&nbsp; <strong>Dimensions:</strong> geo, product, channel</p>
           </div>
 
@@ -177,7 +177,7 @@
             <div class="code-block" data-lang="sql">
               <pre><code><span class="kw">SELECT</span>
     acquisition_channel,
-    <span class="fn">avg</span>(lifetime_ggr) <span class="kw">AS</span> avg_ltv  <span class="cmt">-- simplified: using GGR as LTV proxy</span>
+    <span class="fn">avg</span>(lifetime_ngr) <span class="kw">AS</span> avg_ltv
 <span class="kw">FROM</span> mart_player_lifetime
 <span class="kw">WHERE</span> days_active > <span class="num">30</span>
 <span class="kw">GROUP BY</span> acquisition_channel</code></pre>
