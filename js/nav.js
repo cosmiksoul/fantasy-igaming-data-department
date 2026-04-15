@@ -99,7 +99,7 @@ function buildSidebar() {
   let html = `
     <div class="sidebar-header">
       <a href="${indexPath}" class="sidebar-logo">
-        <span class="sidebar-logo-main">Fantasy iGaming LTD</span>
+        <span class="sidebar-logo-main">Fantasy iGaming</span>
         <span class="sidebar-logo-sub">Data Department</span>
       </a>
     </div>
