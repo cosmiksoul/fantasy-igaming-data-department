@@ -44,6 +44,13 @@ const NAV_SECTIONS = [
       { num: '16', title: 'FinOps', href: 'finops.html', color: 'gray' },
       { num: '17', title: 'Roadmap', href: 'roadmap.html', color: 'gray' },
     ]
+  },
+  {
+    group: 'Meta',
+    items: [
+      { num: '18', title: 'Glossary', href: 'glossary.html', color: 'gray' },
+      { num: '19', title: 'About', href: 'about.html', color: 'gray' },
+    ]
   }
 ];
 

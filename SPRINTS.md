@@ -158,12 +158,26 @@
 
 ---
 
-## Sprint 11: Polish
+## Sprint 11: Glossary + About
+**Goal:** pages 18 and 19 — glossary of terms and about/author page
+
+**Tasks:**
+- [ ] `pages/glossary.html` — собрать все термины из всех страниц проекта
+- [ ] Алфавитный порядок (A-Z, А-Я)
+- [ ] Каждый термин: определение 1-2 предложения + ссылка на страницу-источник
+- [ ] `pages/about.html` — текст о проекте (идея, мотивация, для кого)
+- [ ] Карточка автора: Константин Гупалов, Head of Analytics, ссылки (LinkedIn, GitHub)
+- [ ] Contributing guide: как предложить улучшение (issue, PR)
+- [ ] Changelog: версии проекта
+
+---
+
+## Sprint 12: Polish
 **Goal:** final QA, cross-linking, OG images
 
 **Tasks:**
 - [ ] Cross-link audit: every reference to another section is a working link
-- [ ] Mobile QA: test all 18 pages on 375px viewport
+- [ ] Mobile QA: test all 19 pages on 375px viewport
 - [ ] Navigation QA: sidebar, breadcrumbs, prev/next on every page
 - [ ] Content QA: all SQL references use correct table names from data model
 - [ ] OG image: create `assets/og-image.png` (1200x630)
