@@ -3,52 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Management — Fantasy iGaming LTD</title>
-  <meta name="description" content="Спринты, встречи, OKR, бэклог">
-  <meta property="og:title" content="Management — Fantasy iGaming LTD">
-  <meta property="og:description" content="Спринты, встречи, OKR, бэклог">
+  <title>Management Practices — Fantasy iGaming LTD</title>
+  <meta name="description" content="Спринты, встречи, 1-on-1, OKR, управление бэклогом и база знаний data-команды.">
+  <meta property="og:title" content="Management Practices — Fantasy iGaming LTD">
+  <meta property="og:description" content="Спринты, встречи, 1-on-1, OKR, управление бэклогом и база знаний data-команды.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- Burger -->
   <button class="burger" aria-label="Menu">
-    <div class="burger-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="burger-icon"><span></span><span></span><span></span></div>
   </button>
-
-  <!-- Sidebar overlay -->
   <div class="sidebar-overlay"></div>
-
-  <!-- Sidebar (built by nav.js) -->
   <aside class="sidebar"></aside>
 
   <div class="layout">
     <main class="content">
       <div class="content-inner">
 
-        <!-- Breadcrumbs (built by nav.js) -->
         <nav class="breadcrumbs"></nav>
 
-        <!-- Page Header -->
         <div class="page-header">
-          <h1>Management</h1>
-          <p class="page-header-desc">Спринты, встречи, OKR, бэклог</p>
+          <h1>Management Practices</h1>
+          <p class="page-header-desc">Как организована работа data-команды: спринты, встречи, OKR, бэклог и база знаний.</p>
         </div>
 
-        <!-- Content goes here -->
+        <!-- ================================ -->
+        <!-- Sprint Structure -->
+        <!-- ================================ -->
         <section class="section">
-          <p>Содержимое раздела в разработке.</p>
+          <h2>Структура спринта</h2>
+          <p>2-недельные спринты. Баланс: 70% roadmap-задачи / 30% буфер на ad-hoc запросы от бизнеса.</p>
+
+          <div class="timeline">
+            <div class="timeline-block">
+              <div class="timeline-block-title">Понедельник W1 — Planning (1ч)</div>
+              <div class="timeline-block-body">Лиды представляют задачи из бэклога. Оценка в story points. Коммитмент команды. Буфер 30% не планируется — резерв на ad-hoc.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">Ежедневно — Standup (15 мин)</div>
+              <div class="timeline-block-body">Async в Slack (текстовый формат) или короткий call. Три вопроса: что сделал, что буду делать, есть ли блокеры. Не для отчётности — для синхронизации.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">Среда W1 — Mid-sprint check</div>
+              <div class="timeline-block-body">Лид проверяет прогресс: что в трекере, есть ли риски по дедлайну. Если ad-hoc забрал больше 30% — пересогласовать scope.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">Пятница W2 — Review (1ч)</div>
+              <div class="timeline-block-body">Демо результатов: новые дашборды, модели, пайплайны. Стейкхолдеры приглашены. Фидбек фиксируется в бэклоге.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">Пятница W2 — Retro (30 мин)</div>
+              <div class="timeline-block-body">Что пошло хорошо / что пошло не так / что улучшить. Action items с владельцем. Ротация фасилитатора между стримами.</div>
+            </div>
+          </div>
         </section>
 
-        <!-- Prev/Next (built by nav.js) -->
+        <!-- ================================ -->
+        <!-- Meeting Cadence -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Регулярные встречи</h2>
+
+          <div class="table-wrap">
+            <table class="sla-table">
+              <thead>
+                <tr><th>Встреча</th><th>Участники</th><th>Частота</th><th>Длительность</th><th>Цель</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1-on-1 Director ↔ Lead</td>
+                  <td>Director + каждый Lead</td>
+                  <td>Еженедельно</td>
+                  <td>30 мин</td>
+                  <td>Люди, процессы, стратегия</td>
+                </tr>
+                <tr>
+                  <td>Director ↔ C-level</td>
+                  <td>Director + CEO/CFO/CMO</td>
+                  <td>Раз в 2 недели</td>
+                  <td>45 мин</td>
+                  <td>Статус, приоритеты, ресурсы</td>
+                </tr>
+                <tr>
+                  <td>All-hands Data</td>
+                  <td>Вся data-команда (20 чел)</td>
+                  <td>Ежемесячно</td>
+                  <td>1ч</td>
+                  <td>Результаты, roadmap, признание</td>
+                </tr>
+                <tr>
+                  <td>Governance Council</td>
+                  <td>Director + Owners + Leads</td>
+                  <td>Ежеквартально</td>
+                  <td>1.5ч</td>
+                  <td>DQ, определения, политики</td>
+                </tr>
+                <tr>
+                  <td>Cross-functional sync</td>
+                  <td>Lead Analyst + PM/Marketing/Finance</td>
+                  <td>Еженедельно</td>
+                  <td>30 мин</td>
+                  <td>Приоритеты ad-hoc, статус задач</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- 1-on-1 -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>1-on-1 с лидом</h2>
+          <p>30 минут еженедельно. Агенду ставит лид (не директор). Три блока:</p>
+
+          <div class="dash-grid dash-grid-3">
+            <div class="card">
+              <h3>People</h3>
+              <p>Как дела в команде? Кто перегружен, кто недогружен? Есть ли конфликты? Кого пора повышать? Настроение и мотивация.</p>
+            </div>
+            <div class="card">
+              <h3>Process</h3>
+              <p>Что мешает работать? Блокеры, зависимости от других команд, технический долг. Что улучшить в процессах?</p>
+            </div>
+            <div class="card">
+              <h3>Strategy</h3>
+              <p>Куда движемся? Правильные ли приоритеты? Что важного мы не делаем? Идеи для следующего квартала.</p>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <strong>Правило:</strong> если 1-on-1 превращается в статус-апдейт по задачам — что-то идёт не так. Для статуса есть standup и Jira. 1-on-1 — про людей и стратегию.
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- OKR -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>OKR Framework</h2>
+          <p>Квартальные OKR. Устанавливаются Director + Leads, синхронизируются с компанейскими OKR.</p>
+
+          <div class="card">
+            <h3>Пример: Q2 2026</h3>
+            <p><strong>Objective:</strong> Обеспечить data-driven принятие решений во всех бизнес-функциях</p>
+
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Key Result</th><th>Target</th><th>Текущий</th><th>Owner</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>100% critical marts покрыты SLA с мониторингом</td>
+                    <td>100%</td>
+                    <td class="cell-good">100%</td>
+                    <td>Lead DE</td>
+                  </tr>
+                  <tr>
+                    <td>80% ad-hoc запросов решаются через self-service (Metabase)</td>
+                    <td>80%</td>
+                    <td class="cell-warn">62%</td>
+                    <td>Lead BI</td>
+                  </tr>
+                  <tr>
+                    <td>LTV-модель в production с MAPE &lt; 20%</td>
+                    <td>MAPE &lt;20%</td>
+                    <td class="cell-good">18.7%</td>
+                    <td>Lead DS</td>
+                  </tr>
+                  <tr>
+                    <td>3 data literacy воркшопа проведены</td>
+                    <td>3</td>
+                    <td class="cell-warn">1</td>
+                    <td>Data Literacy Spec.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Backlog Management -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Управление бэклогом</h2>
+
+          <h3>Как приходят запросы</h3>
+          <ul class="list">
+            <li><strong>Jira-форма:</strong> стейкхолдер заполняет: что нужно, зачем, к когда, кто потребитель. Автоматически попадает в бэклог.</li>
+            <li><strong>Slack #data-requests:</strong> для срочных/простых вопросов. Бот напоминает оформить тикет если вопрос не закрыт за 24ч.</li>
+            <li><strong>Cross-functional sync:</strong> еженедельно PM/Marketing/Finance приносят приоритеты.</li>
+          </ul>
+
+          <h3>Приоритизация (RICE)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Фактор</th><th>Описание</th><th>Шкала</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Reach</strong></td><td>Сколько людей/процессов затронет за квартал</td><td>Кол-во пользователей</td></tr>
+                <tr><td><strong>Impact</strong></td><td>Насколько сильно повлияет на метрику</td><td>3 / 2 / 1 / 0.5 / 0.25</td></tr>
+                <tr><td><strong>Confidence</strong></td><td>Уверенность в оценке</td><td>100% / 80% / 50%</td></tr>
+                <tr><td><strong>Effort</strong></td><td>Человеко-недели</td><td>Число</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="metric-card-formula">RICE Score = (Reach × Impact × Confidence) / Effort</div>
+
+          <h3>Коммуникация статуса</h3>
+          <ul class="list">
+            <li><strong>Slack-бот:</strong> автоматическое обновление при смене статуса тикета (in progress, done, blocked)</li>
+            <li><strong>Weekly digest:</strong> каждую пятницу в #data-updates — что закрыли, что в работе, что заблокировано</li>
+          </ul>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Knowledge Management -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>База знаний</h2>
+          <p>Wiki в Confluence. Структура по разделам. Правило: если объяснил в Slack — напиши в wiki.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Раздел</th><th>Содержимое</th><th>Owner</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Architecture</strong></td><td>Стек, ERD, dbt lineage, ADR (Architecture Decision Records)</td><td>Lead DE</td></tr>
+                <tr><td><strong>Metrics</strong></td><td>Data Dictionary, формулы, SQL-примеры</td><td>Lead Analyst</td></tr>
+                <tr><td><strong>Processes</strong></td><td>CI/CD, on-call, incident response, A/B testing</td><td>Lead DE + Lead DS</td></tr>
+                <tr><td><strong>Runbooks</strong></td><td>Типичные инциденты и как их чинить</td><td>DE team</td></tr>
+                <tr><td><strong>Onboarding</strong></td><td>Чеклист новичка, доступы, первые задачи</td><td>Director</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-tip">
+            <strong>Правило двух раз:</strong> если один и тот же вопрос задали в Slack дважды — ответ должен появиться в wiki. Иначе знания остаются в головах и теряются при увольнении.
+          </div>
+        </section>
+
         <nav class="prev-next"></nav>
 
-        <!-- Footer -->
         <footer class="footer">
           <div class="footer-inner">
             <span>&copy; 2026 Fantasy iGaming LTD — Open-source reference</span>

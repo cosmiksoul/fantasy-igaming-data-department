@@ -4,51 +4,294 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A/B Testing — Fantasy iGaming LTD</title>
-  <meta name="description" content="HADI-цикл, бэклог гипотез, полный кейс">
+  <meta name="description" content="HADI-цикл, бэклог гипотез, чеклист запуска, шаблон отчёта и полный кейс с числами.">
   <meta property="og:title" content="A/B Testing — Fantasy iGaming LTD">
-  <meta property="og:description" content="HADI-цикл, бэклог гипотез, полный кейс">
+  <meta property="og:description" content="HADI-цикл, бэклог гипотез, чеклист запуска, шаблон отчёта и полный кейс с числами.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/og-image.png">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- Burger -->
   <button class="burger" aria-label="Menu">
-    <div class="burger-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <div class="burger-icon"><span></span><span></span><span></span></div>
   </button>
-
-  <!-- Sidebar overlay -->
   <div class="sidebar-overlay"></div>
-
-  <!-- Sidebar (built by nav.js) -->
   <aside class="sidebar"></aside>
 
   <div class="layout">
     <main class="content">
       <div class="content-inner">
 
-        <!-- Breadcrumbs (built by nav.js) -->
         <nav class="breadcrumbs"></nav>
 
-        <!-- Page Header -->
         <div class="page-header">
-          <h1>A/B Testing</h1>
-          <p class="page-header-desc">HADI-цикл, бэклог гипотез, полный кейс</p>
+          <h1>A/B Testing Framework</h1>
+          <p class="page-header-desc">Как устроена экспериментальная платформа: от гипотезы до решения. HADI-цикл, бэклог, чеклист, шаблон отчёта и полный кейс с конкретными числами.</p>
         </div>
 
-        <!-- Content goes here -->
+        <!-- ================================ -->
+        <!-- HADI Cycle -->
+        <!-- ================================ -->
         <section class="section">
-          <p>Содержимое раздела в разработке.</p>
+          <h2>HADI-цикл</h2>
+          <p>Каждый эксперимент проходит четыре фазы. Цикл повторяется: инсайт из одного теста порождает гипотезу для следующего.</p>
+
+          <div class="timeline">
+            <div class="timeline-block">
+              <div class="timeline-block-title">H — Hypothesis (гипотеза)</div>
+              <div class="timeline-block-body">Формулируем: «Если [изменение], то [метрика] [направление] на [MDE], потому что [обоснование]». Гипотеза должна быть конкретной, измеримой и фальсифицируемой.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">A — Action (действие)</div>
+              <div class="timeline-block-body">Реализуем изменение, настраиваем эксперимент: рандомизация, split, длительность. Проверяем чеклист запуска (см. ниже). Запускаем тест.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">D — Data (данные)</div>
+              <div class="timeline-block-body">Собираем данные за расчётный период. Не подглядываем до окончания (no-peek commitment). Проверяем SRM (Sample Ratio Mismatch) — split 50/50 ±1%.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">I — Insight (инсайт)</div>
+              <div class="timeline-block-body">Анализируем результаты: CI, p-value, effect size. Сегментация по гео, платформе, сегменту. Решение: раскатить / итерировать / закрыть. Документируем learning.</div>
+            </div>
+          </div>
         </section>
 
-        <!-- Prev/Next (built by nav.js) -->
+        <!-- ================================ -->
+        <!-- Hypothesis Backlog -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Бэклог гипотез</h2>
+          <p>Все гипотезы приоритизированы по ICE: Impact × Confidence × Ease (каждый 1-10).</p>
+
+          <div class="table-wrap">
+            <table class="sla-table">
+              <thead>
+                <tr><th>ID</th><th>Гипотеза</th><th>Метрика</th><th>MDE</th><th>ICE</th><th>Статус</th><th>Owner</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AB-01</td>
+                  <td>Если упростить форму депозита (3 поля → 1), то конверсия Reg→FTD вырастет на 15%, потому что снижается friction</td>
+                  <td>Reg→FTD %</td>
+                  <td>+15%</td>
+                  <td><strong>720</strong></td>
+                  <td><span class="badge badge-teal">done</span></td>
+                  <td>PM Payments</td>
+                </tr>
+                <tr>
+                  <td>AB-02</td>
+                  <td>Если показать персональные рекомендации игр на главной, то session duration вырастет на 10%</td>
+                  <td>Avg session, мин</td>
+                  <td>+10%</td>
+                  <td><strong>540</strong></td>
+                  <td><span class="badge badge-amber">running</span></td>
+                  <td>PM Casino</td>
+                </tr>
+                <tr>
+                  <td>AB-03</td>
+                  <td>Если заменить welcome bonus $20 freebet на $10 cashback, то LTV 30d вырастет на 8%, потому что cashback удерживает лучше</td>
+                  <td>LTV 30d</td>
+                  <td>+8%</td>
+                  <td><strong>480</strong></td>
+                  <td><span class="badge badge-primary">backlog</span></td>
+                  <td>CRM Lead</td>
+                </tr>
+                <tr>
+                  <td>AB-04</td>
+                  <td>Если добавить live-стриминг на страницу матча, то handle на live-ставки вырастет на 20%</td>
+                  <td>Live handle</td>
+                  <td>+20%</td>
+                  <td><strong>420</strong></td>
+                  <td><span class="badge badge-primary">backlog</span></td>
+                  <td>PM Sports</td>
+                </tr>
+                <tr>
+                  <td>AB-05</td>
+                  <td>Если отправлять push-уведомление за 1 час до матча (вместо 24ч), то CTR push вырастет на 30%</td>
+                  <td>Push CTR</td>
+                  <td>+30%</td>
+                  <td><strong>360</strong></td>
+                  <td><span class="badge badge-primary">backlog</span></td>
+                  <td>CRM</td>
+                </tr>
+                <tr>
+                  <td>AB-06</td>
+                  <td>Если скрыть вейджер-требования при выдаче бонуса (показать только при попытке вывода), то bonus take rate вырастет на 25%</td>
+                  <td>Bonus take rate</td>
+                  <td>+25%</td>
+                  <td><strong>280</strong></td>
+                  <td><span class="badge badge-gray">rejected</span></td>
+                  <td>Compliance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-warning">
+            <strong>AB-06 отклонён:</strong> Compliance заблокировал — скрытие условий бонуса нарушает требования регулятора (Curaçao). Гипотеза переформулирована: «упростить отображение вейджера» вместо «скрыть».
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Launch Checklist -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Чеклист запуска</h2>
+          <p>8 пунктов, которые должны быть выполнены до запуска любого A/B-теста.</p>
+
+          <div class="card">
+            <ul class="list">
+              <li><strong>1. Гипотеза</strong> — сформулирована в формате «если [X], то [Y] на [Z]%, потому что [причина]»</li>
+              <li><strong>2. Метрики</strong> — определены primary (одна), secondary (1-3) и guardrail (что не должно упасть)</li>
+              <li><strong>3. Sample size</strong> — рассчитан: MDE, power 80%, significance 95%. Калькулятор или формула в тикете</li>
+              <li><strong>4. Рандомизация</strong> — на уровне player_id (не session). Проверен SRM на первые 24ч</li>
+              <li><strong>5. Длительность</strong> — минимум 7 дней (полный недельный цикл). Для sports — минимум 14 дней (покрытие выходных матчей)</li>
+              <li><strong>6. Stakeholder sign-off</strong> — PM + Lead DS + Lead Analyst подписали. Для тестов с бонусами — ещё и CFO</li>
+              <li><strong>7. No-peek commitment</strong> — не смотреть результаты до окончания расчётного периода. Исключение: guardrail metric пробита — останавливаем</li>
+              <li><strong>8. Rollback plan</strong> — что делать если тест ломает UX или метрику. Feature flag для мгновенного отключения</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Report Template -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Шаблон отчёта</h2>
+
+          <div class="card">
+            <h3>Структура</h3>
+            <ul class="list">
+              <li><strong>Гипотеза:</strong> что тестировали и почему</li>
+              <li><strong>Setup:</strong> sample size, длительность, split, рандомизация</li>
+              <li><strong>Результат:</strong> primary metric — CI, p-value, effect size. Secondary и guardrail метрики</li>
+              <li><strong>Сегментация:</strong> результат по гео, платформе, VIP-тиру, каналу привлечения</li>
+              <li><strong>Рекомендация:</strong> раскатить на 100% / итерировать / закрыть — с обоснованием</li>
+              <li><strong>Learnings:</strong> что узнали, что можно протестировать следующим</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Full Case -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Полный кейс: упрощение формы депозита (AB-01)</h2>
+
+          <div class="accordion open">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span class="accordion-chevron">&#9654;</span>
+              <span class="accordion-title">Гипотеза и расчёт</span>
+            </div>
+            <div class="accordion-body">
+              <div class="card mb-lg">
+                <p><strong>Гипотеза:</strong> если упростить форму первого депозита с 3 шагов (выбор метода → ввод суммы → подтверждение) до 1 шага (метод + сумма на одном экране), то конверсия Reg→FTD вырастет на 15%, потому что каждый лишний шаг теряет ~10% пользователей.</p>
+                <p><strong>Primary metric:</strong> Reg→FTD conversion rate (текущий baseline: 33%)</p>
+                <p><strong>Secondary:</strong> avg first deposit amount, time-to-deposit</p>
+                <p><strong>Guardrail:</strong> payment failure rate не должна вырасти &gt; 1pp</p>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <tbody>
+                    <tr><td><strong>Baseline conversion</strong></td><td>33%</td></tr>
+                    <tr><td><strong>MDE (minimum detectable effect)</strong></td><td>+15% relative (33% → 38%)</td></tr>
+                    <tr><td><strong>Significance level (α)</strong></td><td>0.05</td></tr>
+                    <tr><td><strong>Power (1-β)</strong></td><td>0.80</td></tr>
+                    <tr><td><strong>Sample size per group</strong></td><td>1,800 регистраций</td></tr>
+                    <tr><td><strong>Ожидаемые регистрации/день</strong></td><td>~820</td></tr>
+                    <tr><td><strong>Длительность</strong></td><td>5 дней (но округляем до 7 — полный недельный цикл)</td></tr>
+                    <tr><td><strong>Split</strong></td><td>50/50 по player_id</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion open">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span class="accordion-chevron">&#9654;</span>
+              <span class="accordion-title">Результаты</span>
+            </div>
+            <div class="accordion-body">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Метрика</th><th>Control</th><th>Treatment</th><th>Δ</th><th>p-value</th><th>CI 95%</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Reg→FTD %</strong></td>
+                      <td>33.1%</td>
+                      <td class="cell-good"><strong>37.8%</strong></td>
+                      <td class="cell-good">+14.2%</td>
+                      <td>0.003</td>
+                      <td>[+5.1%, +23.3%]</td>
+                    </tr>
+                    <tr>
+                      <td>Avg 1st deposit</td>
+                      <td>$48.20</td>
+                      <td>$46.90</td>
+                      <td class="cell-warn">-2.7%</td>
+                      <td>0.41</td>
+                      <td>[-9.2%, +3.8%] — не значимо</td>
+                    </tr>
+                    <tr>
+                      <td>Time-to-deposit</td>
+                      <td>4.2 мин</td>
+                      <td class="cell-good">2.8 мин</td>
+                      <td class="cell-good">-33%</td>
+                      <td>&lt;0.001</td>
+                      <td>[-42%, -24%]</td>
+                    </tr>
+                    <tr>
+                      <td>Payment failure rate</td>
+                      <td>2.1%</td>
+                      <td>2.3%</td>
+                      <td class="text-muted">+0.2pp</td>
+                      <td>0.68</td>
+                      <td>guardrail OK (не пробита)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3>Сегментация</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Сегмент</th><th>Control</th><th>Treatment</th><th>Δ</th></tr></thead>
+                  <tbody>
+                    <tr><td>Mobile (iOS + Android)</td><td>28.5%</td><td class="cell-good">35.2%</td><td class="cell-good">+23.5%</td></tr>
+                    <tr><td>Desktop</td><td>41.2%</td><td>42.8%</td><td class="text-muted">+3.9% (не значимо)</td></tr>
+                    <tr><td>CIS</td><td>35.0%</td><td class="cell-good">40.1%</td><td class="cell-good">+14.6%</td></tr>
+                    <tr><td>LatAm</td><td>29.8%</td><td class="cell-good">34.5%</td><td class="cell-good">+15.8%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion open">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span class="accordion-chevron">&#9654;</span>
+              <span class="accordion-title">Решение и learnings</span>
+            </div>
+            <div class="accordion-body">
+              <div class="alert alert-tip">
+                <strong>Решение: раскатить на 100%.</strong> Primary metric выросла на +14.2% (p=0.003, значимо). Guardrail не пробита. Средний депозит не упал значимо (-2.7%, p=0.41).
+              </div>
+
+              <h3>Learnings</h3>
+              <ul class="list">
+                <li>Эффект сильнее на mobile (+23.5%) чем на desktop (+3.9%) — на мобильных каждый шаг стоит дороже</li>
+                <li>Время до депозита сократилось с 4.2 до 2.8 минут — меньше friction = меньше дропа</li>
+                <li>Следующая гипотеза: добавить Apple Pay / Google Pay для ещё большего упрощения (AB-07, в бэклоге)</li>
+                <li>Ожидаемый бизнес-эффект: +14.2% FTD при 820 регистраций/день = ~+38 FTD/день = ~+$2,280/день NGR (при avg LTV $60)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <nav class="prev-next"></nav>
 
-        <!-- Footer -->
         <footer class="footer">
           <div class="footer-inner">
             <span>&copy; 2026 Fantasy iGaming LTD — Open-source reference</span>
