@@ -87,6 +87,108 @@
   --transition-normal: 250ms ease;
 }
 
+/* --- Light Theme --- */
+[data-theme="light"] {
+  --bg-body: #f5f4f0;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0eff0;
+  --bg-sidebar: #eeedf0;
+  --bg-code: #f0eff5;
+  --bg-input: #f0eff5;
+
+  --border: #d8d6d0;
+  --border-hover: #c0beb8;
+
+  --text-heading: #1a1a1f;
+  --text-body: #3a3840;
+  --text-secondary: #6a6878;
+  --text-muted: #9a98a2;
+
+  --color-lavender: #6b63c0;
+}
+
+[data-theme="light"] .sidebar-overlay.visible {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .badge-primary { background: rgba(83, 74, 183, 0.12); }
+[data-theme="light"] .badge-teal { background: rgba(29, 158, 117, 0.12); }
+[data-theme="light"] .badge-blue { background: rgba(55, 138, 221, 0.12); }
+[data-theme="light"] .badge-amber { background: rgba(186, 117, 23, 0.12); }
+[data-theme="light"] .badge-pink { background: rgba(212, 83, 126, 0.12); }
+[data-theme="light"] .badge-red { background: rgba(226, 75, 74, 0.12); }
+[data-theme="light"] .badge-green { background: rgba(99, 153, 34, 0.12); }
+[data-theme="light"] .badge-coral { background: rgba(216, 90, 48, 0.12); }
+[data-theme="light"] .badge-gray { background: rgba(136, 135, 128, 0.12); }
+[data-theme="light"] .badge-revenue { background: rgba(29, 158, 117, 0.12); }
+
+[data-theme="light"] .alert-tip { background: rgba(29, 158, 117, 0.06); }
+[data-theme="light"] .alert-warning { background: rgba(186, 117, 23, 0.06); }
+[data-theme="light"] .alert-info { background: rgba(55, 138, 221, 0.06); }
+[data-theme="light"] .alert-danger { background: rgba(226, 75, 74, 0.06); }
+
+[data-theme="light"] .disclaimer {
+  background: rgba(186, 117, 23, 0.05);
+  border-color: rgba(186, 117, 23, 0.2);
+}
+
+[data-theme="light"] .dash-stacked-seg { color: #fff; }
+
+[data-theme="light"] .burger {
+  background: #fff;
+  border-color: var(--border);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  width: 100%;
+  transition: color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--text-heading);
+}
+
+.theme-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-icon-sun,
+.theme-icon-moon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.theme-icon-moon {
+  background: transparent;
+  box-shadow: inset 5px -3px 0 0 var(--text-secondary);
+  display: block;
+}
+
+.theme-icon-sun {
+  background: var(--text-secondary);
+  box-shadow: 0 0 0 2px var(--bg-sidebar), 0 0 0 3px var(--text-secondary);
+  display: none;
+}
+
+[data-theme="light"] .theme-icon-moon { display: none; }
+[data-theme="light"] .theme-icon-sun { display: block; }
+
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -173,7 +275,7 @@ code {
 .content {
   flex: 1;
   min-width: 0;
-  padding: 60px var(--space-xl) var(--space-xl);
+  padding: var(--space-xl);
   max-width: 100%;
 }
 
@@ -304,8 +406,8 @@ code {
 .burger {
   position: fixed;
   top: var(--space-md);
-  left: var(--space-md);
-  z-index: 101;
+  right: var(--space-md);
+  z-index: 1000;
   width: 40px;
   height: 40px;
   display: flex;
@@ -889,6 +991,7 @@ code {
   margin: 0;
   white-space: pre;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .code-block code {
@@ -1112,6 +1215,7 @@ code {
 /* --- Tables (generic) --- */
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: var(--space-lg);
 }
 
@@ -1119,12 +1223,19 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--fs-small);
+  min-width: 400px;
 }
 
 th, td {
   padding: var(--space-sm) var(--space-md);
   text-align: left;
   border-bottom: 1px solid var(--border);
+  min-width: 80px;
+}
+
+th:first-child,
+td:first-child {
+  min-width: 120px;
 }
 
 th {
@@ -1184,8 +1295,12 @@ td {
 /* Grid layouts */
 .dash-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-md);
+}
+
+@media (min-width: 480px) {
+  .dash-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 768px) {
@@ -1199,6 +1314,7 @@ td {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-md);
+  min-width: 0;
 }
 
 .dash-kpi-label {
@@ -1501,7 +1617,7 @@ td {
   }
 
   .content {
-    padding: 60px var(--space-2xl) var(--space-2xl);
+    padding: var(--space-2xl);
   }
 }
 

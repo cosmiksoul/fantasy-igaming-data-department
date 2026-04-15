@@ -115,6 +115,17 @@ function buildSidebar() {
   }
 
   html += `</nav>`;
+  html += `
+    <div style="padding: var(--space-md) 0; border-top: 1px solid var(--border); flex-shrink: 0;">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="theme-icon">
+          <span class="theme-icon-moon"></span>
+          <span class="theme-icon-sun"></span>
+        </span>
+        <span class="theme-toggle-label">Сменить тему</span>
+      </button>
+    </div>
+  `;
   sidebar.innerHTML = html;
 }
 
@@ -218,6 +229,26 @@ function toggleAccordion(headerEl) {
     accordion.classList.toggle('open');
   }
 }
+
+/**
+ * Theme toggle
+ */
+function initTheme() {
+  const saved = localStorage.getItem('fi-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('fi-theme', next);
+}
+
+// Apply theme immediately (before DOMContentLoaded to prevent flash)
+initTheme();
 
 /**
  * Initialize navigation on DOMContentLoaded
