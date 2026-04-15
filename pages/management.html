@@ -219,6 +219,134 @@
         </section>
 
         <!-- ================================ -->
+        <!-- Priority Decision Example -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Пример: три запроса, ресурсы на один</h2>
+          <p>Реальная ситуация: три стейкхолдера одновременно просят срочную задачу. В спринте осталось 12 человеко-дней свободной ёмкости. Каждая задача — ~10 дней.</p>
+
+          <div class="table-wrap">
+            <table class="sla-table">
+              <thead>
+                <tr><th>Запрос</th><th>От кого</th><th>RICE</th><th>Effort</th><th>Решение</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Churn-модель в production</td>
+                  <td>CPO</td>
+                  <td class="cell-good"><strong>680</strong></td>
+                  <td>10 дней</td>
+                  <td><span class="badge badge-teal">Sprint 12 (приоритет)</span></td>
+                </tr>
+                <tr>
+                  <td>Новый дашборд P&L</td>
+                  <td>CFO</td>
+                  <td><strong>450</strong></td>
+                  <td>8 дней</td>
+                  <td><span class="badge badge-blue">Sprint 13</span></td>
+                </tr>
+                <tr>
+                  <td>Аудит GA4 тегов</td>
+                  <td>CMO</td>
+                  <td class="text-muted"><strong>120</strong></td>
+                  <td>5 дней</td>
+                  <td><span class="badge badge-gray">Бэклог, Q3</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Почему churn-модель важнее P&L дашборда?</h3>
+            <p>RICE помог расставить приоритеты, но CFO недоволен: «мне нужен P&L-отчёт к совету директоров».</p>
+            <p><strong>Эскалация:</strong> Director выносит на bi-weekly sync с C-level. Аргументация через бизнес-impact:</p>
+            <ul class="list">
+              <li><strong>Churn-модель:</strong> при текущем churn 8%/мес мы теряем ~1,400 игроков/мес × avg LTV $180 = <strong>$252K/мес revenue at risk</strong>. Модель снижает churn на 18% (по пилоту) = $45K/мес сохранённого revenue.</li>
+              <li><strong>P&L дашборд:</strong> CFO и так получает данные в Excel от Financial Analyst. Дашборд — удобство, не блокер. Ценность = экономия ~4 часов/неделю работы аналитика.</li>
+            </ul>
+            <p><strong>Решение C-level:</strong> churn-модель идёт в Sprint 12. P&L дашборд — в Sprint 13. CFO получает промежуточное решение: улучшенный Excel-шаблон на время ожидания.</p>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Capacity Planning -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Capacity Planning</h2>
+          <p>Как считать реальную ёмкость команды на спринт. Частая ошибка — планировать от «20 человек × 10 дней = 200 дней». Реальность другая.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Фактор</th><th>Расчёт</th><th>Человеко-дней</th></tr></thead>
+              <tbody>
+                <tr><td>Общая ёмкость</td><td>20 чел × 10 рабочих дней</td><td><strong>200</strong></td></tr>
+                <tr><td class="cell-warn">Ad-hoc буфер (30%)</td><td>200 × 0.30</td><td class="cell-warn">-60</td></tr>
+                <tr><td>= Доступно для roadmap</td><td></td><td><strong>140</strong></td></tr>
+                <tr><td class="cell-warn">Отпуска, больничные (~10%)</td><td>140 × 0.10</td><td class="cell-warn">-14</td></tr>
+                <tr><td>= После отпусков</td><td></td><td><strong>126</strong></td></tr>
+                <tr><td class="cell-warn">On-call, встречи, код-ревью (~15%)</td><td>126 × 0.15</td><td class="cell-warn">-19</td></tr>
+                <tr><td class="cell-good">= Реально на фичи</td><td></td><td class="cell-good"><strong>~107</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-warning">
+            <strong>Правило:</strong> из 200 человеко-дней в спринте реально доступны ~107 на roadmap-задачи. Планируйте от этого числа, не от 200. Если планировать от 200 — каждый спринт будет «провален», команда демотивирована, стейкхолдеры разочарованы.
+          </div>
+
+          <div class="card">
+            <h3>Распределение по стримам (Sprint 12)</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Стрим</th><th>Люди</th><th>Ёмкость (грубо)</th><th>Roadmap задачи</th></tr></thead>
+                <tbody>
+                  <tr><td>Data Engineering</td><td>5</td><td>~27 дней</td><td>Churn model pipeline + Feature Store интеграция</td></tr>
+                  <tr><td>Analytics</td><td>8</td><td>~43 дня</td><td>3 ad-hoc, cohort deep dive, weekly reports</td></tr>
+                  <tr><td>Data Science</td><td>4</td><td>~21 день</td><td>Churn model v2 training + A/B analysis</td></tr>
+                  <tr><td>BI Engineering</td><td>3</td><td>~16 дней</td><td>Self-service воркшоп + шаблон P&L (prep)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================ -->
+        <!-- Delegation Framework -->
+        <!-- ================================ -->
+        <section class="section">
+          <h2>Delegation Framework</h2>
+          <p>Что директор делает сам, что полностью делегирует лидам, что решается совместно. Чёткие границы снижают bottleneck на директоре и дают лидам автономию.</p>
+
+          <div class="table-wrap">
+            <table class="sla-table">
+              <thead>
+                <tr><th>Зона принятия решений</th><th>Директор</th><th>Лид</th><th>Совместно</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Найм — финальное решение</td><td>&#10003;</td><td></td><td></td></tr>
+                <tr><td>Найм — интервью и отбор</td><td></td><td>&#10003;</td><td></td></tr>
+                <tr><td>Приоритизация внутри стрима</td><td></td><td>&#10003;</td><td></td></tr>
+                <tr><td>Приоритизация между стримами</td><td>&#10003;</td><td></td><td></td></tr>
+                <tr><td>OKR — цели (Objectives)</td><td>&#10003;</td><td></td><td></td></tr>
+                <tr><td>OKR — ключевые результаты (KR)</td><td></td><td></td><td>&#10003;</td></tr>
+                <tr><td>Бюджет</td><td>&#10003;</td><td></td><td></td></tr>
+                <tr><td>Архитектурные решения</td><td></td><td></td><td>&#10003;</td></tr>
+                <tr><td>Инцидент P1</td><td></td><td></td><td>&#10003;</td></tr>
+                <tr><td>Инцидент P2/P3</td><td></td><td>&#10003;</td><td></td></tr>
+                <tr><td>Повышения и пересмотр грейдов</td><td></td><td></td><td>&#10003;</td></tr>
+                <tr><td>Увольнения</td><td>&#10003;</td><td></td><td></td></tr>
+                <tr><td>Технический долг — приоритизация</td><td></td><td>&#10003;</td><td></td></tr>
+                <tr><td>Внешние интеграции и vendor selection</td><td></td><td></td><td>&#10003;</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-info">
+            <strong>Принцип:</strong> директор принимает решения, которые затрагивают несколько стримов или бюджет. Лид принимает решения внутри своего стрима. «Совместно» = лид предлагает, директор утверждает (или наоборот). Цель: максимум автономии лидам при сохранении согласованности.
+          </div>
+        </section>
+
+        <!-- ================================ -->
         <!-- Knowledge Management -->
         <!-- ================================ -->
         <section class="section">
