@@ -1922,3 +1922,25 @@ td {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* --- Playbook Card (full-width) --- */
+.playbook-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--color-gray);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+.playbook-card h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.playbook-card-disclaimer {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
