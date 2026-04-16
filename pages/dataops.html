@@ -68,11 +68,51 @@
 
           <h3>Git-flow</h3>
           <div class="code-block" data-lang="text">
-            <pre><code>main (prod)     ─────────────●──────────●─────────
-                            ↑          ↑
-develop (staging) ──●──●──●─┘──●──●──●─┘──●──●──
-                    ↑  ↑  ↑    ↑  ↑  ↑
-feature branches    └──┘──┘    └──┘──┘</code></pre>
+            <pre><code>main (prod)     ─────●──────────●───────●──────────
+                    ↑          ↑       ↑
+                    │          │   hotfix/DE-999
+                    │          │       │
+develop (staging) ──●──●──●──●─┘──●──●─┘──●──●────
+                    ↑  ↑  ↑       ↑  ↑
+feature branches    └──┘──┘       └──┘</code></pre>
+          </div>
+
+          <h3>Hotfix — когда надо вчера</h3>
+          <p>Критичный баг в prod (P1 incident, CEO dashboard сломан). Ждать полный цикл develop → staging → main нельзя.</p>
+
+          <div class="timeline">
+            <div class="timeline-block">
+              <div class="timeline-block-title">1. Branch от main</div>
+              <div class="timeline-block-body">Ветка создаётся от <code>main</code>, не от <code>develop</code>. Именование: <code>hotfix/DE-999-fix-ngr-calc</code>. Только fix, никаких попутных улучшений.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">2. Fix + тест локально</div>
+              <div class="timeline-block-body">Минимальное изменение. <code>dbt run --select affected_model</code> + <code>dbt test</code> локально. Убедиться что fix решает проблему и не ломает зависимые модели.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">3. Быстрый PR в main</div>
+              <div class="timeline-block-body">PR напрямую в <code>main</code>. Один approve от Lead DE (не два как в обычном flow). CI всё равно прогоняет <code>dbt compile</code> + <code>dbt test</code>.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">4. Smoke test на staging</div>
+              <div class="timeline-block-body">Deploy hotfix-ветки в staging. Проверка: fix работает, ничего не сломали. 15-30 минут.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">5. Merge → Production</div>
+              <div class="timeline-block-body">Merge в <code>main</code>. Airflow автоматически деплоит. Мониторинг: данные корректны, SLA восстановлен.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">6. Cherry-pick в develop</div>
+              <div class="timeline-block-body">Обязательно: <code>git cherry-pick</code> fix из main в develop. Иначе fix потеряется в следующем релизе и баг вернётся.</div>
+            </div>
+            <div class="timeline-block">
+              <div class="timeline-block-title">7. Post-mortem</div>
+              <div class="timeline-block-body">Раз понадобился hotfix — что-то упустили в обычном flow. Post-mortem обязателен: почему баг прошёл review, почему тесты не поймали, что добавить в CI.</div>
+            </div>
+          </div>
+
+          <div class="alert alert-warning">
+            Hotfix — исключение, не правило. Если хотфиксы стали частыми — это сигнал что CI/CD flow не работает: плохое покрытие тестами, слабое review, или слишком большие релизы. Норма: 0-1 hotfix в квартал.
           </div>
         </section>
 
