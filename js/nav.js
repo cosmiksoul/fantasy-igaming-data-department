@@ -123,7 +123,7 @@ function buildSidebar() {
 
   html += `</nav>`;
   html += `
-    <div style="padding: var(--space-md) 0; border-top: 1px solid var(--border); flex-shrink: 0;">
+    <div class="sidebar-footer">
       <button class="theme-toggle" onclick="toggleTheme()">
         <span class="theme-icon">
           <span class="theme-icon-moon"></span>

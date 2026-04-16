@@ -291,9 +291,10 @@ code {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
+  height: 100dvh; /* dynamic viewport height — avoids mobile browser chrome overlap */
   background: var(--bg-sidebar);
   border-right: 1px solid var(--border);
-  overflow-y: auto;
+  overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
   z-index: 100;
   transform: translateX(-100%);
@@ -340,10 +341,18 @@ code {
   overflow-y: auto;
   scrollbar-width: none;
   padding: var(--space-md) 0;
+  min-height: 0; /* allow flex child to shrink below content size */
 }
 
 .sidebar-nav::-webkit-scrollbar {
   display: none;
+}
+
+.sidebar-footer {
+  flex-shrink: 0;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg-sidebar);
 }
 
 .sidebar-group {
